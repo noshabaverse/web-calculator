@@ -1,19 +1,37 @@
+// Cache the display element once
+const display = document.getElementById("display");
+
 function append(value) {
-  document.getElementById("display").value += value;
+  // Avoid two operators in a row
+  const lastChar = display.value.slice(-1);
+  if ("+-*/".includes(lastChar) && "+-*/".includes(value)) return;
+  display.value += value;
 }
 
 function clearDisplay() {
-  document.getElementById("display").value = "";
+  display.value = "";
 }
 
 function calculate() {
   try {
-    const result = eval(document.getElementById("display").value);
-    document.getElementById("display").value = result;
+    // Basic validation: allow only digits, operators, and dots
+    if (/^[\d+\-*/.() ]+$/.test(display.value)) {
+      display.value = Function(`return ${display.value}`)();
+    } else {
+      display.value = "Error";
+    }
   } catch {
-    document.getElementById("display").value = "Error";
+    display.value = "Error";
   }
 }
+
 function toggleDarkMode() {
   document.body.classList.toggle("dark");
+  // Remember choice
+  localStorage.setItem("darkMode", document.body.classList.contains("dark"));
+}
+
+// Apply saved theme on load
+if (localStorage.getItem("darkMode") === "true") {
+  document.body.classList.add("dark");
 }
