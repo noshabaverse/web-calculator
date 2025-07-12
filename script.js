@@ -14,3 +14,6 @@ function calculate() {
     document.getElementById("display").value = "Error";
   }
 }
+function toggleDarkMode() {
+  document.body.classList.toggle("dark");
+}
