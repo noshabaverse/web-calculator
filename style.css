@@ -1,36 +1,108 @@
+/* ==== General Styles ==== */
 body {
-  font-family: Arial;
+  font-family: 'Segoe UI', sans-serif;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
-  background: #f2f2f2;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #e0eafc, #cfdef3);
+  margin: 0;
+  padding: 20px;
 }
 
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  text-align: center;
+}
+
+/* ==== Calculator Styles ==== */
 .calculator {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  width: 300px;
 }
 
 #display {
   width: 100%;
-  height: 40px;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  height: 50px;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
   text-align: right;
-  padding: 5px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background: #f9f9f9;
 }
 
+/* ==== Buttons Grid ==== */
 .buttons {
   display: grid;
-  grid-template-columns: repeat(4, 60px);
-  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
 }
 
 button {
   padding: 15px;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 12px;
+  background-color: #74b9ff;
+  color: white;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0984e3;
+}
+
+button:active {
+  background-color: #005cbf;
+}
+
+/* ==== Dark Mode Styles ==== */
+.toggle-btn {
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+}
+
+body.dark {
+  background: #2c3e50;
+  color: white;
+}
+
+body.dark .calculator {
+  background: #34495e;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+body.dark button {
+  background-color: #555;
+}
+
+body.dark button:hover {
+  background-color: #777;
+}
+
+body.dark #display {
+  background: #1c2833;
+  color: white;
+}
+
+body.dark .title {
+  color: white;
+}
+
+body.dark .toggle-btn {
+  background-color: #888;
 }
